@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Nada que instalar para HTML"
+  build:
+    commands:
+      - echo "Nada que construir"
+  post_build:
+    commands:
+      - echo "Desplegando..."
+      - aws s3 cp index.html s3://<tu-bucket> # Si fuera S3
+      - scp -i tu-clave.pem index.html ec2-user@<IP-EC2>:/var/www/html/
